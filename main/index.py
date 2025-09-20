@@ -1,31 +1,31 @@
 from regex_validators import *
 
 sample_text = """
-Alice Smith, an AI researcher, sent an email to her colleague at alice.smith+work@example.co.uk yesterday, 
-while her assistant's address bob_jones@sub.domain.com bounced due to a typo. She also updated the project 
-website at https://www.test-site.org/path/to/page, though an old URL http://example.com still redirected visitors. 
-In case of urgent matters, the team can call her office at (555) 123-4567 or her mobile 555-987-6543. 
+Dr. Evelyn Parker emailed evelyn.parker.research@innovation-lab.org and cc'd john_doe+updates@techhub.io. 
+An invalid email jane..smith@badmail..com bounced.
 
-During the last meeting, Alice presented credit card transactions: 1111-2222-3333-4444, and noted that 
-another card 5555 6666 7777 8888 had expired. She reminded the finance team that unusual amounts like $12,345.67 
-or $0.99 needed verification. The next meeting was scheduled at 23:15, but someone mistakenly suggested 25:00, 
-which obviously was incorrect. 
+Docs moved to https://docs.innovation-lab.org/releases/v2/index.html, but old http://legacy-site kept redirecting. 
+An ftp://backup.server.com link was flagged as unsupported.
 
-The web development team also discussed HTML changes. They added <h1>Project Launch</h1> to the homepage, 
-<a href="http://example.com">linking to resources</a>, and embedded <img src="logo.png" alt="Logo"> for branding. 
-On social media, hashtags #DataScience, #AI2025, and #python_rocks were trending, though someone accidentally 
-used #Invalid-Hashtag which broke the campaign analytics.
+Calls came through on (800) 321-6549 and 800-654-3210 (valid), but 800.3216.549 was ignored.
 
-Overall, the day was productive: emails sent, URLs updated, phones answered, credit cards checked, 
-times scheduled, HTML verified, hashtags tracked, and currency transactions reviewed — all in one complex, 
-real-world scenario that ensures regex patterns extract relevant data correctly.
+Finance logs showed 1234-5678-9012-3456 and 9876 5432 1098 7654 (valid cards), 
+while 1234-5678-9012 was too short. Transactions included $1,500.00, $0.50, $250,000.99, 
+and an invalid $3000.5.
+
+Meetings were at 09:00 AM, 14:30, and 11:59 PM. Invalid proposals 26:00 and 12:75 were flagged.
+
+Frontend changes added <header>Welcome</header>, <article class="news">News</article>, 
+and <img src="banner.png" alt="Banner">. Even <unknownTag> was spotted.
+
+Hashtags included #InnovationLab, #AI_Future, #123Wins (valid), and #Oops-WrongTag (invalid).
 """
 
 # Helper function to print results neatly
-def pretty_print(label, items):
+def beautify(label, items):
     print(f"\n{label} ({len(items)} found):")
     for i, item in enumerate(items, 1):
-        print(f"  {i}. {item}")
+        print(f"  -> {item}")
 
 # Extract all data
 emails = extract_emails(sample_text)
@@ -37,12 +37,50 @@ html_tags = extract_html_tags(sample_text)
 hashtags = extract_hashtags(sample_text)
 currency = extract_currency(sample_text)
 
-# Print nicely
-pretty_print("Emails", emails)
-pretty_print("URLs", urls)
-pretty_print("Phones", phones)
-pretty_print("Credit Cards", credit_cards)
-pretty_print("Times", times)
-pretty_print("HTML Tags", html_tags)
-pretty_print("Hashtags", hashtags)
-pretty_print("Currency Amounts", currency)
+
+# Time extraction with validation for valid/invalid times
+# Grabing all HH:MM patterns including optional AM/PM
+all_times = re.findall(r'\b\d{1,2}:\d{2}\s?(?:AM|PM|am|pm)?\b', sample_text)
+
+# Separating valid vs invalid times
+valid_times = []
+invalid_times = []
+
+for t in all_times:
+    t_clean = t.upper().replace("AM", "").replace("PM", "").strip()
+    hour, minute = map(int, t_clean.split(":"))
+    if 0 <= hour <= 23 and 0 <= minute <= 59:
+        valid_times.append(t)
+    else:
+        invalid_times.append(t)
+
+
+# Validating emails (simple edge cases)
+valid_emails = []
+invalid_emails = []
+for e in emails:
+    # checking for double dots in domain or username
+    if ".." in e:
+        invalid_emails.append(e)
+    else:
+        valid_emails.append(e)
+
+
+# my heading
+print("\n\n__________________________________________\n")
+print("   This Is My Regex Validation System")
+print("__________________________________________\n")
+
+# my pretty print functions
+beautify("Valid Emails", valid_emails)
+beautify("Invalid Emails", invalid_emails)
+beautify("URLs", urls)
+beautify("Phones", phones)
+beautify("Credit Cards", credit_cards)
+beautify("Valid Times (12-hour format)", valid_times)
+beautify("Invalid Times", invalid_times)
+beautify("HTML Tags", html_tags)
+beautify("Hashtags", hashtags)
+beautify("Currency Amounts", currency)
+
+print("\n")
