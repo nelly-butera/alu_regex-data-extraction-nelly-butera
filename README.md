@@ -62,41 +62,41 @@ Hashtags included #InnovationLab, #AI_Future, #123Wins (valid), and #Oops-WrongT
 
 ```bash
 Emails (2 found):
-  1. evelyn.parker.research@innovation-lab.org
-  2. john_doe+updates@techhub.io
+  -> evelyn.parker.research@innovation-lab.org
+  -> john_doe+updates@techhub.io
 
 URLs (2 found):
-  1. https://docs.innovation-lab.org/releases/v2/index.html
-  2. http://legacy-site
+  -> https://docs.innovation-lab.org/releases/v2/index.html
+  -> http://legacy-site
 
 Phones (2 found):
-  1. (800) 321-6549
-  2. 800-654-3210
+  -> (800) 321-6549
+  -> 800-654-3210
 
 Credit Cards (2 found):
-  1. 1234-5678-9012-3456
-  2. 9876 5432 1098 7654
+  -> 1234-5678-9012-3456
+  -> 9876 5432 1098 7654
 
 Times (3 found):
-  1. 09:00 AM
-  2. 14:30 (24-hour)
-  3. 11:59 PM
+  -> 09:00 AM
+  -> 14:30 (24-hour)
+  -> 11:59 PM
 
 HTML Tags (4 found):
-  1. <header>Welcome</header>
-  2. <article class="news">News</article>
-  3. <img src="banner.png" alt="Banner">
-  4. <unknownTag>
+  -> <header>Welcome</header>
+  -> <article class="news">News</article>
+  -> <img src="banner.png" alt="Banner">
+  -> <unknownTag>
 
 Hashtags (3 found):
-  1. #InnovationLab
-  2. #AI_Future
-  3. #123Wins
+  -> #InnovationLab
+  -> #AI_Future
+  -> #123Wins
 
 Currency Amounts (3 found):
-  1. $1,500.00
-  2. $0.50
-  3. $250,000.99
+  -> $1,500.00
+  -> $0.50
+  -> $250,000.99
 
 ```
 
