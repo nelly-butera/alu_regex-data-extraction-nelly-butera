@@ -103,6 +103,6 @@ Currency Amounts (3 found):
 ### Running the Script
 
 ```bash
-python src/main.py
+python3 src/index.py
 
 ```
