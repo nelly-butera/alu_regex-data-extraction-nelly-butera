@@ -1,8 +1,7 @@
 ### Regex Extractor
 
-```bash
 A simple Python project for extracting common patterns (emails, URLs, phone numbers, credit cards, times, HTML tags, hashtags, and currency amounts) using regular expressions.
-```
+
 
 ### Project Structure
 
@@ -15,7 +14,7 @@ regex-extractor/
 ```
 
 ### Features
-```bash
+
 - **Email Extraction** → Finds valid email addresses (supports subdomains and `+` addressing).
 - **URL Extraction** → Captures HTTP/HTTPS URLs with optional paths.
 - **Phone Extraction** → Handles formats like `(123) 456-7890` and `123-456-7890`.
@@ -25,7 +24,6 @@ regex-extractor/
 - **Hashtag Extraction** → Captures hashtags containing letters/numbers/underscores.
 - **Currency Extraction** → Matches amounts like `$12,345.67`, `$0.99`, `$100`.
 
-```
 
 ### Installation
 
