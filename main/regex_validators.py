@@ -14,7 +14,7 @@ def extract_urls(text: str) -> list:
 
 # Phone Number Validator
 def extract_phones(text: str) -> list:
-    pattern = r'(\(\d{3}\)\s|\d{3}[-.])\d{3}[-.]\d{4}'
+    pattern = r'(?:\(\d{3}\)\s|\d{3}[-.])\d{3}[-.]\d{4}'
     return re.findall(pattern, text)
 
 
